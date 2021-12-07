@@ -13,6 +13,7 @@ services:
      ENABLE_RCON: "true"
      RCON_PASSWORD: "testing"
      ENABLE_AUTOPAUSE: "TRUE"
+     DEBUG_MEMORY: "TRUE"
    restart: unless-stopped
    tty: true
    stdin_open: true
