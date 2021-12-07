@@ -6,9 +6,9 @@ services:
      - "25565:25565"
    environment:
      EULA: "TRUE"
-     MOTD: "SUP §l§cBITCHES§r - it's §n1.18§r time"
+     MOTD: "SUP §l§cBITCHES§r - it's §n1.18§r time xx"
      DIFFICULTY: "hard"
-     MAX_PLAYERS: 8
+     MAX_PLAYERS: 10
      MODE: "survival"
      ENABLE_RCON: "true"
      RCON_PASSWORD: "testing"
@@ -16,6 +16,7 @@ services:
      DEBUG_MEMORY: "TRUE"
      MAX_MEMORY: "3200M"
      INIT_MEMORY: "2800M"
+     VIEW_DISTANCE: "16"
    restart: unless-stopped
    tty: true
    stdin_open: true
