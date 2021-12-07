@@ -19,10 +19,6 @@ services:
    volumes:
      # attach a directory relative to the directory containing this compose file
      - ./minecraft-data:/data
-   deploy:
-     resources:
-       limits:
-         memory: 1.5G
 
 volumes:
   mc:
