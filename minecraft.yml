@@ -17,6 +17,7 @@ services:
      MAX_MEMORY: "3200M"
      INIT_MEMORY: "2800M"
      VIEW_DISTANCE: "16"
+     SEED: "Geminitayisgood"
    restart: unless-stopped
    tty: true
    stdin_open: true
