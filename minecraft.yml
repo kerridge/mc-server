@@ -14,9 +14,8 @@ services:
      RCON_PASSWORD: "testing"
      ENABLE_AUTOPAUSE: "TRUE"
      DEBUG_MEMORY: "TRUE"
-     MAX_MEMORY: "800M"
-     INIT_MEMORY: "800M"
-     MEMORY: "800M"
+     MAX_MEMORY: "1.5G"
+     INIT_MEMORY: "1.2G"
    restart: unless-stopped
    tty: true
    stdin_open: true
