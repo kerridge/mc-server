@@ -1,6 +1,6 @@
 version: '3.7'
 services:
- minecraft:
+ vanilla:
    image: itzg/minecraft-server
    ports:
      - "25565:25565"
