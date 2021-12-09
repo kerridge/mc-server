@@ -14,8 +14,8 @@ services:
      RCON_PASSWORD: "testing"
      ENABLE_AUTOPAUSE: "TRUE"
      DEBUG_MEMORY: "TRUE"
-     MAX_MEMORY: "3200M"
-     INIT_MEMORY: "2800M"
+     MAX_MEMORY: "3350M"
+     INIT_MEMORY: "3350M"
      VIEW_DISTANCE: "28"
      SEED: "Geminitayisgood"
    restart: unless-stopped
