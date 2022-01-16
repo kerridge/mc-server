@@ -1,29 +1,52 @@
-version: '3.7'
+version: "3.7"
 services:
- minecraft:
-   image: itzg/minecraft-server
-   ports:
-     - "25565:25565"
-   environment:
-     EULA: "TRUE"
-     MOTD: "§l§cSUP BITCHES§r §nITS 1.18"
-     DIFFICULTY: "hard"
-     MAX_PLAYERS: 8
-     MODE: "survival"
-     ENABLE_RCON: "true"
-     RCON_PASSWORD: "testing"
-     ENABLE_AUTOPAUSE: "TRUE"
-     DEBUG_MEMORY: "TRUE"
-   restart: unless-stopped
-   tty: true
-   stdin_open: true
-   volumes:
-     # attach a directory relative to the directory containing this compose file
-     - ./minecraft-data:/data
-   deploy:
-     resources:
-       limits:
-         memory: 1.5G
+  minecraft:
+    image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      MOTD: "§l§cSUP BITCHES§r §nITS 1.18"
+      DIFFICULTY: "hard"
+      MAX_PLAYERS: 8
+      MODE: "survival"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      ENABLE_AUTOPAUSE: "TRUE"
+      DEBUG_MEMORY: "TRUE"
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ./minecraft-data:/data
+    # deploy:
+    #   resources:
+    #     limits:
+    #       memory: 1.5G
+    
+  backup:
+    image: itzg/mc-backup
+    # This needs to be set because backups use hostnames
+    hostname: minecraftbackup
+    # command: /bin/bash
+    restart: always
+    environment:
+      BACKUP_METHOD: restic
+      BACKUP_INTERVAL: "3h"
+      INITIAL_DELAY: 5
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+      RESTIC_REPOSITORY: ${RESTIC_REPOSITORY}
+      RESTIC_FORGET_ARGS: ${RESTIC_FORGET_ARGS}
+      RESTIC_PASSWORD: ${RESTIC_PASSWORD}
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      RCON_PORT: 28016
+      RCON_HOST: minecraft
+    volumes:
+      - ./minecraft-data:/data:ro
+      - ${HOME}/recover:/recover
 
 volumes:
   mc:
