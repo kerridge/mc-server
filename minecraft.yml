@@ -16,7 +16,7 @@ services:
       RCON_PASSWORD: ${RCON_PASSWORD}
       # ENABLE_AUTOPAUSE: "TRUE"
       # botania:gardenofglass
-      CF_SERVER_MOD: "https://www.curseforge.com/minecraft/modpacks/project-ozone-3-a-new-way-forward/download/3590510/file"
+      CF_SERVER_MOD: "/modpacks/PO3+-+3.4.6server.zip"
       DEBUG_MEMORY: "TRUE"
       MAX_MEMORY: "4300M"
       SPAWN_PROTECTION: 0
@@ -32,6 +32,7 @@ services:
     volumes:
       # attach a directory relative to the directory containing this compose file
       - ./po3-data:/data
+      - ./modpacks:/modpacks
 
   vanilla:
     image: itzg/minecraft-server
