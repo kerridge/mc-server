@@ -1,5 +1,35 @@
 version: "3.7"
 services:
+  project_ozone:
+    image: itzg/minecraft-server
+    ports:
+      - "25565:25565"
+    environment:
+      TYPE: "CURSEFORGE"
+      VERSION: 1.12.2
+      MOTD: "hello §l§cmy dudes§r xx"
+      MODE: 'survival'
+      DIFFICULTY: "hard"
+      EULA: "TRUE"
+      ENABLE_RCON: "true"
+      RCON_PASSWORD: ${RCON_PASSWORD}
+      # ENABLE_AUTOPAUSE: "TRUE"
+      botania:gardenofglass
+      CF_SERVER_MOD: https://www.curseforge.com/minecraft/modpacks/project-ozone-3-a-new-way-forward/download/3590510/file
+      DEBUG_MEMORY: "TRUE"
+      MAX_MEMORY: "4300M"
+      SPAWN_PROTECTION: 0
+      ALLOW_FLIGHT: TRUE
+      RCON_CMDS_STARTUP:  |-
+        /gamerule doFireTick false
+      OPS: curly6
+    restart: unless-stopped
+    tty: true
+    stdin_open: true
+    volumes:
+      # attach a directory relative to the directory containing this compose file
+      - ./po3-data:/data
+
   vanilla:
     image: itzg/minecraft-server
     ports:
@@ -17,6 +47,9 @@ services:
       MAX_MEMORY: "4300M"
       VIEW_DISTANCE: "30"
       SEED: "Geminitayisgood"
+      RCON_CMDS_STARTUP:  |-
+        /gamerule doFireTick false
+      OPS: curly6
     restart: unless-stopped
     tty: true
     stdin_open: true
