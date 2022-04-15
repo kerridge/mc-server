@@ -7,6 +7,7 @@ services:
     environment:
       TYPE: "CURSEFORGE"
       VERSION: 1.12.2
+      MAX_PLAYERS: 4
       MOTD: "hello §l§cmy dudes§r xx"
       MODE: 'survival'
       DIFFICULTY: "hard"
@@ -19,7 +20,7 @@ services:
       DEBUG_MEMORY: "TRUE"
       MAX_MEMORY: "4300M"
       SPAWN_PROTECTION: 0
-      ALLOW_FLIGHT: TRUE
+      ALLOW_FLIGHT: "TRUE"
       RCON_CMDS_STARTUP:  |-
         /gamerule doFireTick false
       OPS: curly6
