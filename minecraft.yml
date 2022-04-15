@@ -27,6 +27,8 @@ services:
     restart: unless-stopped
     tty: true
     stdin_open: true
+    hostname: po3
+    container_name: po3
     volumes:
       # attach a directory relative to the directory containing this compose file
       - ./po3-data:/data
@@ -54,6 +56,8 @@ services:
     restart: unless-stopped
     tty: true
     stdin_open: true
+    hostname: vanilla
+    container_name: vanilla
     volumes:
       # attach a directory relative to the directory containing this compose file
       - ./minecraft-data:/data
